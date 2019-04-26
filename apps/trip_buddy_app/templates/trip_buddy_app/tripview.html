@@ -1,0 +1,13 @@
+<h1> <p>{{ trip.Destination }}</p> </h1>   <a href="/logout">logut</a>    <a href="/dashboard">Dashboard</a>
+<div class="mytrips">
+    <!-- <p>Planned by: {{user.FirstName}} {{user.LastName}}</p> -->
+    <p>Description:{{trip.Plan}}</p>
+    <p> Travel date from : {{ trip.start_date }}</p>
+    <p> Travel Date to : {{ trip.end_date }} </p>
+</div>
+    <h1>Other Joining the Trip :</h1>
+{% for user in other_users_trips %}
+   <p> {{user.FirstName}} {{user.LastName}}</p>
+{% endfor %}
+
+

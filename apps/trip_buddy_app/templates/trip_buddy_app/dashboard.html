@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello {{user.FirstName}}! </h1> <a href="/logout">logut</a>  <a href="/trips/new">Create a Trip</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <body>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <div class="trips">
+            <h1>Your Trip Schedules</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Plan</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trip in user.join_other_trip.all %}
+          <tr>
+              <td><a href="/trips/{{trip.id}}">{{ trip.Destination}}</a></td>
+              <td>{{ trip.start_date }}</td>
+              <td>{{ trip.end_date }}</td>
+              <td>{{ trip.Plan }}</td>
+              <td><a href="/trips/cancel/{{trip.id}}">Cancel</a>{% if request.session.id == trip.creator.id %}<a href="/deletetrip/{{trip.id}}">Delete</a>{% endif %}</td
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+           <h1>Other Users Travel Plans</h1>
+
+            <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Do You Want to Join?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    
+                      {% for trip in other_users_list %}
+                        <tr>
+                          <td><a href="/trips/{{trip.id}}">{{ trip.Destination}}</a></td>
+                          <td>{{ trip.start_date }}</td>
+                          <td>{{ trip.end_date }}</td>
+                          <td><a href="/trips/join/{{trip.id}}"> Join </a></td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+           
+     {% if request.session.id == trip.creator.id %}
+     <a href="/deletetrip/{{ trip.id }}">Delete</a> <a href="/trips/edit/{{trip.id}}">Edit</a> <a href="/trips/{{trip.id}}/">View</a>
+    {% endif %}
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
