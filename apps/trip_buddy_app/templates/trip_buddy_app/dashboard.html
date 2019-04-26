@@ -46,7 +46,7 @@
               <td>{{ trip.start_date }}</td>
               <td>{{ trip.end_date }}</td>
               <td>{{ trip.Plan }}</td>
-              <td><a href="/trips/cancel/{{trip.id}}">Cancel</a><a href="/trips/edit/{{trip.id}}">Edit</a>{% if request.session.id == trip.creator.id %}<a href="/deletetrip/{{trip.id}}">Delete</a>{% endif %}</td
+              <td> <a href="/trips/cancel/{{trip.id}}">Cancel</a> <a href="/trips/edit/{{trip.id}}">Edit </a>{% if request.session.id == trip.creator.id %} <a href="/deletetrip/{{trip.id}}">Delete</a>{% endif %}</td
           </tr>
         {% endfor %}
       </tbody>
