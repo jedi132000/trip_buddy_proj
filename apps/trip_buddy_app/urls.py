@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^addtrip/$', views.addtrip),
     url(r'^trips/join/(?P<trip_id>\d+)/$', views.tripjoin),
+    url(r'^trips/edit/(?P<trip_id>\d+)/$', views.edittrip),
     url(r'^trips/cancel/(?P<trip_id>\d+)/$', views.tripcancel),
     url(r'^createtrip/$', views.createtrip),
     url(r'^validate_login/$', views.validate_login),

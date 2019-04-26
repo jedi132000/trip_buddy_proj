@@ -1,6 +1,7 @@
 from django.db import models
 import bcrypt
 import re
+from datetime import datetime, timedelta
 
 class UserManager(models.Manager):
     def validate(self, form):
@@ -81,9 +82,8 @@ class TripManager(models.Manager):
         
           
 
-    def easy_trip_join(self, trip_id, user_id):
+    def easy_trip_join(self, trip_id):
          trip=Trip.objects.get(id=trip_id)
-         user = User.objects.get(id=user_id)
          print("*" * 50)
          print(trip)
          print("*" * 50)
@@ -102,6 +102,14 @@ class TripManager(models.Manager):
          print("*" * 50)
          trip.join_trip.remove(user)
          trip.save()
+
+    def easy_trip_update (self, form, trip_id):
+        trip = Trip.objects.get(id=trip_id)
+        trip.Destination = form['Destination'],
+        trip.start_date = form['start_date'],
+        trip.end_date = form['end_date'],
+        trip.Plan = form['Plan'],
+        trip.save()
     
     
     def easy_trip_delete(self, trip_id):

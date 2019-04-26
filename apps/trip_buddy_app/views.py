@@ -121,6 +121,16 @@ def tripview(request, trip_id):
 #     print(context['trip'])
 #     return render (request,'trip_buddy_app/dashboard.html', context )
 
+def edittrip(request, trip_id):
+    context = {
+         "user": User.objects.get(id=request.session['id']),
+          "my_trip": Trip.objects.get(id=trip_id)
+        }
+    print('#'*50)
+    print(context['my_trip'])    
+    return render(request,'trip_buddy_app/edittrip.html', context)
+
+
 
 def deletetrip(request, trip_id):
     Trip.objects.easy_trip_delete(trip_id)

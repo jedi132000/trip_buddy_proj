@@ -18,14 +18,12 @@
         </ul>
         {% endif %}
         <h1> Hello {{user.FirstName}}! Edit Your Trip!</h1> <a href="/logout">logut</a> 
-        <form action="/updatetrip/{{user.id}}/" method="POST">
+        <form action="/trips/edit/{{trip.id}}/" method="POST">
             {% csrf_token %}
-            {% for trip in my_trip_list %}
-            <p>Destination: <input type="text" name="Destination" value="{{trip.Destination}}"></p>
-            <p>start_date: <input type="text" name="start_date" value="{{trip.start_date}}"></p>
-            <p>end_date: <input type="text" name="end_date" value="{{trip.end_date}}"></p>
-            <p>Plan: <input type="text" name="Plan" value="{{trip.Plan}}"></p>
-            {% endfor %}
+            <p>Destination: <input type="text" name="Destination" value="{{my_trip.Destination}}"></p>
+            <p>start_date: <input type="date" name="start_date" value="{{tmy_rip.start_date}}"></p>
+            <p>end_date: <input type="date" name="end_date" value="{{my_trip.end_date}}"></p>
+            <p>Plan: <input type="text" name="Plan" value="{{my_trip.Plan}}"></p>
             <input type="submit" value="Submit">
         </form>
 </body>
