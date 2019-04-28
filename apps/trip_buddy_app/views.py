@@ -124,7 +124,7 @@ def edittrip(request, trip_id):
 
 def update(request, trip_id):
     trip = Trip.objects.easy_trip_update (request.POST, trip_id),
-    return redirect ('/dashboard/')
+    return redirect ("/trips/new")
 
 
 
