@@ -105,10 +105,22 @@ class TripManager(models.Manager):
 
     def easy_trip_update (self, form, trip_id):
         trip = Trip.objects.get(id=trip_id)
-        trip.Destination = form['Destination'],
-        trip.start_date = form['start_date'],
-        trip.end_date = form['end_date'],
-        trip.Plan = form['Plan'],
+        trip.Destination = form['Destination']
+        trip.start_date = form['start_date']
+        trip.end_date = form['end_date']
+        trip.Plan = form['Plan']
+        print("*" * 50)
+        print(trip.Destination)
+        print("*" * 50)
+        print("*" * 50)
+        print(trip.start_date)
+        print("*" * 50)
+        print("*" * 50)
+        print(trip.end_date)
+        print("*" * 50)
+        print("*" * 50)
+        print(trip.Plan)
+        print("*" * 50)
         trip.save()
     
     
@@ -128,8 +140,8 @@ class Trip(models.Model):
     objects = TripManager()
 
     def __repr__(self):
-        return f"Trip: {self.Destination} ({self.Plan})"
+        return f"Trip: {self.Destination} ({self.Plan}   ({self.start_date})"
       
 
     def __str__(self):
-        return f"<Trip: {self.Destination}  ({self.Plan})>"
+        return f"<Trip: {self.Destination}  ({self.Plan} ({self.start_date} )>"
