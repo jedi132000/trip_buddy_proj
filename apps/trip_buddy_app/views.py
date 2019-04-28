@@ -111,15 +111,6 @@ def tripview(request, trip_id):
     print(context['trip'])
     return render(request,'trip_buddy_app/tripview.html', context)
 
-# def tripjoin(request, trip_id):
-#     this_user = User.objects.get(id=request.session['id'])
-#     this_trip =  Trip.objects.get(id=trip_id)
-#     context = {
-#         'join_trip' : this_trip.join_trip.add(this_user),
-#     }
-#     print('#'*50)
-#     print(context['trip'])
-#     return render (request,'trip_buddy_app/dashboard.html', context )
 
 def edittrip(request, trip_id):
     context = {
@@ -129,6 +120,11 @@ def edittrip(request, trip_id):
     print('#'*50)
     print(context['my_trip'])    
     return render(request,'trip_buddy_app/edittrip.html', context)
+
+
+def update(request, trip_id):
+    trip = Trip.objects.easy_trip_update (request.POST, trip_id),
+    return redirect ('/dashboard/')
 
 
 
