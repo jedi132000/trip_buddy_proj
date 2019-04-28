@@ -18,7 +18,7 @@
         </ul>
         {% endif %}
         <h1> Hello {{user.FirstName}}! Edit Your Trip!</h1> <a href="/logout">logut</a> 
-        <form action="/trips/update/{{trip.id}}/" method="POST">
+        <form action="/trips/update/{{my_trip.id}}/" method="POST">
             {% csrf_token %}
             <p>Destination: <input type="text" name="Destination" value="{{my_trip.Destination}}"></p>
             <p>start_date: <input type="date" name="start_date" value="{{my_trip.start_date}}"></p>
